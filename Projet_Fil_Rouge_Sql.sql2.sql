@@ -1,1 +1,0 @@
-SELECT * FROM loan_prediction.loan_prediction_data;
