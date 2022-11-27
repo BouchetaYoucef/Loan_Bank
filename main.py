@@ -2,7 +2,7 @@ import streamlit as st
 from PIL import Image
 import pickle
 
-model = pickle.load(open('model1.pkl', 'rb'))
+model = pickle.load(open('model.pkl', 'rb'))
 
 # st.write("L'application qui prédit l'accord du crédit")
 
@@ -104,7 +104,7 @@ def run():
             duration = 480
         features = [[gen, mar, dep, edu, emp, mon_income, co_mon_income, loan_amt, duration, cred, prop]]
         print(features)
-        prediction = model(features)
+        prediction = model.predict(features)
         lc = [str(i) for i in prediction]
         ans = int("".join(lc))
         if ans == 0:
