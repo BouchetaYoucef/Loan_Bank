@@ -104,7 +104,7 @@ def run():
             duration = 480
         features = [[gen, mar, dep, edu, emp, mon_income, co_mon_income, loan_amt, duration, cred, prop]]
         print(features)
-        prediction = model.predict(features)
+        prediction = model(features)
         lc = [str(i) for i in prediction]
         ans = int("".join(lc))
         if ans == 0:
