@@ -2,7 +2,7 @@ import streamlit as st
 from PIL import Image
 import pickle
 
-model = pickle.load(open('mode.pkl', 'rb'))
+model = pickle.load(open('model.pkl', 'rb'))
 
 #Collecter le profil d'entrée
 st.sidebar.header("Les caracteristiques du client")
