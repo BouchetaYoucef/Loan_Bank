@@ -4,7 +4,7 @@ import pickle
 
 model = pickle.load(open('model.pkl', 'rb'))
 
-st.write("LOAN PREDICTION")
+# st.write("LOAN PREDICTION")
 #Collecter le profil d'entrée
 # st.sidebar.header("L'application qui prédit l'accord du crédit")
 
