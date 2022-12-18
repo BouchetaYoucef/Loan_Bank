@@ -4,33 +4,18 @@ import pickle
 
 model = pickle.load(open('model.pkl', 'rb'))
 
-# st.write("L'application qui prédit l'accord du crédit")
-
+st.write("Les caracteristiques du client")
 #Collecter le profil d'entrée
-st.sidebar.header("Les caracteristiques du client")
+# st.sidebar.header("L'application qui prédit l'accord du crédit")
 
 def run():
     img1 = Image.open('image4.jpg')
     img1 = img1.resize((180, 180))
-    st.image(img1, use_column_width=False)
-    
-    
-    # Gender=st.sidebar.selectbox('Sexe',('Male','Female'))
-    # Married=st.sidebar.selectbox('Marié',('Yes','No'))
-    # Dependents=st.sidebar.selectbox('Enfants',('0','1','2','3+'))
-    # Education=st.sidebar.selectbox('Education',('Graduate','Not Graduate'))
-    # Self_Employed=st.sidebar.selectbox('Salarié ou Entrepreneur',('Yes','No'))
-    # ApplicantIncome=st.sidebar.slider('Salaire du client',150,4000,200)
-    # CoapplicantIncome=st.sidebar.slider('Salaire du conjoint',0,40000,2000)
-    # LoanAmount=st.sidebar.slider('Montant du crédit en Kdollar',9.0,700.0,200.0)
-    # Loan_Amount_Term=st.sidebar.selectbox('Durée du crédit',(360.0,120.0,240.0,180.0,60.0,300.0,36.0,84.0,12.0))
-    # Credit_History=st.sidebar.selectbox('Credit_History',(1.0,0.0))
-    # Property_Area=st.sidebar.selectbox('Property_Area',('Urban','Rural','Semiurban'))
-    
+    st.image(img1, use_column_width=False)  
     
     new_title = '<p style="font-family:sans-serif; color:Red; font-size: 20px;">LOAN PREDICTION</p>'
     st.markdown(new_title, unsafe_allow_html=True)
-    title = '<p style="font-family:sans-serif; color:Blue; font-size: 30px;">Bank Simplonien</p>'
+    # title = '<p style="font-family:sans-serif; color:Blue; font-size: 30px;">Bank Simplonien</p>'
 
     st.markdown(title,unsafe_allow_html=True)
 
