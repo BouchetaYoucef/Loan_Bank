@@ -1,12 +1,7 @@
-
-
-# In[32]:
-
 # Importer les packages
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score,classification_report
@@ -23,8 +18,8 @@ from transformers import pipeline
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import OneHotEncoder
-
-from sklearn.model_selection import GridSearchCV , cross_val_score
+from sklearn.model_selection import GridSearchCV
+# from sklearn.val_score import val_score
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.ensemble import BaggingClassifier , AdaBoostClassifier , StackingClassifier , GradientBoostingClassifier

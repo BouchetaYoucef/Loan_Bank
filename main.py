@@ -54,11 +54,11 @@ credit_input=df_clean.drop(columns=['Loan_ID','Loan_Status'])
 donnee_entree=pd.concat([input_df,credit_input],axis=0)
 
 # # encodage des données
-var_cat=['Gender', 'Married', 'Dependents', 'Education','Self_Employed','Credit_History', 'Property_Area']
-for col in var_cat:
-    dummy=pd.lBE(donnee_entree[col],drop_first=True)
-    donnee_entree=pd.concat([dummy,donnee_entree],axis=1)
-    del donnee_entree[col]
+# var_cat=['Gender', 'Married', 'Dependents', 'Education','Self_Employed','Credit_History', 'Property_Area']
+# for col in var_cat:
+#     dummy=pd.lBE(donnee_entree[col],drop_first=True)
+#     donnee_entree=pd.concat([dummy,donnee_entree],axis=1)
+#     del donnee_entree[col]
 #prendre uniquement la premiere ligne
 donnee_entree=donnee_entree[:1]
 
