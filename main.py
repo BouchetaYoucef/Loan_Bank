@@ -6,7 +6,7 @@ model = pickle.load(open('model.pkl', 'rb'))
 
 st.write("LOAN PREDICTION")
 #Collecter le profil d'entrée
-st.sidebar.header("L'application qui prédit l'accord du crédit")
+# st.sidebar.header("L'application qui prédit l'accord du crédit")
 
 def run():
  img1 = Image.open('image4.jpg')
