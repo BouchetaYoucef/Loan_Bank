@@ -38,8 +38,8 @@ def client_caract_entree():
     'Property_Area':Property_Area
     }
 
-#     profil_client=pd.DataFrame(data,index=[0])
-#     return profil_client
+    profil_client=pd.DataFrame(data,index=[0])
+    return profil_client
 
 # input_df=client_caract_entree()
 
