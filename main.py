@@ -17,7 +17,7 @@ new_title = '<p style="font-family:sans-serif; color:Red; font-size: 20px;">Les 
 st.markdown(new_title, unsafe_allow_html=True)
 # title = '<p style="font-family:sans-serif; color:Blue; font-size: 30px;">Bank Simplonien</p>'
 
-st.markdown(title,unsafe_allow_html=True)
+# st.markdown(title,unsafe_allow_html=True)
 
 fn = st.text_input('Full Name')
 account_no = st.text_input('Account number')
