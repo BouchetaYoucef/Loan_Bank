@@ -49,7 +49,8 @@ data={
 }
 
 profil_client=pd.DataFrame(data,index=[0])
-return profil_client
+
+# return profil_client
 
 input_df=client_caract_entree()
 
