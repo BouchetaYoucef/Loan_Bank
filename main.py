@@ -5,18 +5,18 @@ import pickle
 
 def run():
     img1 = Image.open('image4.jpg')
-    img1 = img1.resize((180, 180))
+    img1 = img1.resize((190, 190))
     st.image(img1, use_column_width=False)
 
 
-    # new_title = '<p style="font-family:sans-serif; color:Orange; font-size: 20px;"></p>'
+    # new_title = '<p style="font-family:sans-serif; color:red; font-size: 20px;"></p>'
     # st.markdown(new_title, unsafe_allow_html=True)s
-    # title = '<p style="font-family:sans-serif; color:orange; font-size: 30px;">Bank_Loan_Prediction</p>'
+    title = '<p style="font-family:sans-serif; color:red; font-size: 30px;">BANK SIMPLONIEN</p>'
 
     # st.markdown(title,unsafe_allow_html=True)
 
-    fn = st.text_input('Full Name')
-    account_no = st.text_input('Account number')
+    # fn = st.text_input('Full Name')
+    # account_no = st.text_input('Account number')
 
     gen_display = ('Female','Male')
     gen_options = list(range(len(gen_display)))
