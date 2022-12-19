@@ -19,8 +19,8 @@ st.markdown(new_title, unsafe_allow_html=True)
 
 # st.markdown(title,unsafe_allow_html=True)
 
-fn = st.text_input('Full Name')
-account_no = st.text_input('Account number')
+# fn = st.text_input('Full Name')
+# account_no = st.text_input('Account number')
 
 gen_display = ('Female','Male')
 gen_options = list(range(len(gen_display)))
@@ -78,9 +78,9 @@ lc = [str(i) for i in prediction]
 ans = int("".join(lc))
 if ans == 0:
  st.error(
-"Hello " + fn +' you will not get a loan as per the calculations of the bank.'
+"Hello " + fn +' Désolé!, crédit refusé.'
 )
 else:
  st.success(
-"Hello " + fn + ' '+' Congratulations!! you will get the loan from Bank'
+"Hello " + fn + ' '+' Félicitation!, crédit accordé'
 )
