@@ -59,7 +59,7 @@ for col in var_cat:
     dummy=pd.lBE(donnee_entree[col],drop_first=True)
     donnee_entree=pd.concat([dummy,donnee_entree],axis=1)
     del donnee_entree[col]
-prendre uniquement la premiere ligne
+# prendre uniquement la premiere ligne
 donnee_entree=donnee_entree[:1]
 
 #afficher les données transformées
