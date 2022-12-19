@@ -78,9 +78,9 @@ lc = [str(i) for i in prediction]
 ans = int("".join(lc))
 if ans == 0:
  st.error(
-"Hello " + fn +' Désolé!, crédit refusé.'
+"Hello " + fn +' you will not get a loan as per the calculations of the bank.'
 )
 else:
  st.success(
-"Hello " + fn + ' '+' Félicitation!, crédit accordé'
+"Hello " + fn + ' '+' Congratulations!! you will get the loan from Bank'
 )
