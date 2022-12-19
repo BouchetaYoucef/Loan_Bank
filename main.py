@@ -48,13 +48,13 @@ def run():
     profil_client=pd.DataFrame(data,index=[0])
     return profil_client
 
-input_df=client_caract_entree()
+# input_df=client_caract_entree()
 
 #Transformer les données d'entrée en données adaptées à notre modèle
 #importer la base de données
 df=pd.read_csv('train.csv')
 credit_input=df.drop(columns=['Loan_ID','Loan_Status'])
-donnee_entree=pd.concat([input_df,credit_input],axis=0)
+# donnee_entree=pd.concat([input_df,credit_input],axis=0)
 
 # encodage des données
 var_cat=['Gender', 'Married', 'Dependents', 'Education','Self_Employed','Credit_History', 'Property_Area']
