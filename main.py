@@ -10,7 +10,7 @@ def run():
 
 
     # new_title = '<p style="font-family:sans-serif; color:Orange; font-size: 20px;"></p>'
-    st.markdown(new_title, unsafe_allow_html=True)
+    # st.markdown(new_title, unsafe_allow_html=True)s
     # title = '<p style="font-family:sans-serif; color:orange; font-size: 30px;">Bank_Loan_Prediction</p>'
 
     st.markdown(title,unsafe_allow_html=True)
