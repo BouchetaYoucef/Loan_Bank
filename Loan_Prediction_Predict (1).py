@@ -42,8 +42,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.pipeline import FeatureUnion
 import mysql.connector
 from sqlalchemy import *
-# import mlflow.sklearn
-# import mlflow
+import mlflow.sklearn
+import mlflow
 
 
 if __name__ == "__main__":
