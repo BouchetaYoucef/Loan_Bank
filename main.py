@@ -68,7 +68,7 @@ st.write(donnee_entree)
 
 
 #importer le modèle
-load_model=pickle.load(open('prevision_credit.pkl','rb'))
+# load_model=pickle.load(open('prevision_credit.pkl','rb'))
 
 
 #appliquer le modèle sur le profil d'entrée
