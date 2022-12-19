@@ -24,19 +24,19 @@ def client_caract_entree():
     Credit_History=st.sidebar.selectbox('Credit_History',(1.0,0.0))
     Property_Area=st.sidebar.selectbox('Property_Area',('Urban','Rural','Semiurban'))
 
-#     data={
-#     'Gender':Gender,
-#     'Married':Married,
-#     'Dependents':Dependents,
-#     'Education':Education,
-#     'Self_Employed':Self_Employed,
-#     'ApplicantIncome':ApplicantIncome,
-#     'CoapplicantIncome':CoapplicantIncome,
-#     'LoanAmount':LoanAmount,
-#     'Loan_Amount_Term':Loan_Amount_Term,
-#     'Credit_History':Credit_History,
-#     'Property_Area':Property_Area
-#     }
+    data={
+    'Gender':Gender,
+    'Married':Married,
+    'Dependents':Dependents,
+    'Education':Education,
+    'Self_Employed':Self_Employed,
+    'ApplicantIncome':ApplicantIncome,
+    'CoapplicantIncome':CoapplicantIncome,
+    'LoanAmount':LoanAmount,
+    'Loan_Amount_Term':Loan_Amount_Term,
+    'Credit_History':Credit_History,
+    'Property_Area':Property_Area
+    }
 
 #     profil_client=pd.DataFrame(data,index=[0])
 #     return profil_client
