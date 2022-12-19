@@ -49,31 +49,31 @@ input_df=client_caract_entree()
 
 #Transformer les données d'entrée en données adaptées à notre modèle
 #importer la base de données
-df=pd.read_csv('train.csv')
-credit_input=df.drop(columns=['Loan_ID','Loan_Status'])
+df_clean=pd.read_csv('train.csv')
+credit_input=df_clean.drop(columns=['Loan_ID','Loan_Status'])
 donnee_entree=pd.concat([input_df,credit_input],axis=0)
 
 # # encodage des données
-# var_cat=['Gender', 'Married', 'Dependents', 'Education','Self_Employed','Credit_History', 'Property_Area']
-# for col in var_cat:
-#     dummy=pd.get_dummies(donnee_entree[col],drop_first=True)
-#     donnee_entree=pd.concat([dummy,donnee_entree],axis=1)
-#     del donnee_entree[col]
-# #prendre uniquement la premiere ligne
-# donnee_entree=donnee_entree[:1]
+var_cat=['Gender', 'Married', 'Dependents', 'Education','Self_Employed','Credit_History', 'Property_Area']
+for col in var_cat:
+    dummy=pd.lBE(donnee_entree[col],drop_first=True)
+    donnee_entree=pd.concat([dummy,donnee_entree],axis=1)
+    del donnee_entree[col]
+#prendre uniquement la premiere ligne
+donnee_entree=donnee_entree[:1]
 
-# #afficher les données transformées
-# st.subheader('Les caracteristiques transformés')
-# st.write(donnee_entree)
-
-
-# #importer le modèle
-# load_model=pickle.load(open('prevision_credit.pkl','rb'))
+#afficher les données transformées
+st.subheader('Les caracteristiques transformés')
+st.write(donnee_entree)
 
 
-# #appliquer le modèle sur le profil d'entrée
-# prevision=load_model.predict(donnee_entree)
+#importer le modèle
+load_model=pickle.load(open('prevision_credit.pkl','rb'))
 
-# st.subheader('Résultat de la prévision')
-# st.write(prevision)
+
+#appliquer le modèle sur le profil d'entrée
+prevision=load_model.predict(donnee_entree)
+
+st.subheader('Résultat de la prévision')
+st.write(prevision)
             
