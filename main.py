@@ -11,6 +11,10 @@ st.write("L'application qui prédit l'accord du crédit")
 #Collecter le profil d'entrée
 st.sidebar.header("Les caracteristiques du client")
 
+img1 = Image.open('image4.jpg')
+img1 = img1.resize((180, 180))
+st.image(img1, use_column_width=False)
+    
 def client_caract_entree():
     Gender=st.sidebar.selectbox('Sexe',('Male','Female'))
     Married=st.sidebar.selectbox('Marié',('Yes','No'))
