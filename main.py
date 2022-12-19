@@ -45,7 +45,7 @@ def client_caract_entree():
     profil_client=pd.DataFrame(data,index=[0])
     return profil_client
 
-input_df=client_caract_entree()
+# input_df=client_caract_entree()
 
 #Transformer les données d'entrée en données adaptées à notre modèle
 #importer la base de données
