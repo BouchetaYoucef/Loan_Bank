@@ -4,7 +4,7 @@ import pickle
 # model = pickle.load(open('model1.pkl', 'rb'))
 
 def run():
-    img1 = Image.open('bank.png')
+    img1 = Image.open('image4.jpg')
     img1 = img1.resize((180, 180))
     st.image(img1, use_column_width=False)
 
