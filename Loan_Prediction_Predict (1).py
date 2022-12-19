@@ -42,8 +42,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.pipeline import FeatureUnion
 import mysql.connector
 from sqlalchemy import *
-import mlflow.sklearn
-import mlflow
+# import mlflow.sklearn
+# import mlflow
 
 
 if __name__ == "__main__":
@@ -158,7 +158,7 @@ if __name__ == "__main__":
 
         mlflow.sklearn.log_model(GBC , "model")
 
-        # In[ ]:
+    
         mlflow.end_run()
 
 

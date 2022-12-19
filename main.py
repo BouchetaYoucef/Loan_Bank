@@ -62,18 +62,18 @@ for col in var_cat:
 #prendre uniquement la premiere ligne
 donnee_entree=donnee_entree[:1]
 
-#afficher les données transformées
-st.subheader('Les caracteristiques transformés')
-st.write(donnee_entree)
+# #afficher les données transformées
+# st.subheader('Les caracteristiques transformés')
+# st.write(donnee_entree)
 
 
-#importer le modèle
-load_model=pickle.load(open('prevision_credit.pkl','rb'))
+# #importer le modèle
+# load_model=pickle.load(open('prevision_credit.pkl','rb'))
 
 
-#appliquer le modèle sur le profil d'entrée
-prevision=load_model.predict(donnee_entree)
+# #appliquer le modèle sur le profil d'entrée
+# prevision=load_model.predict(donnee_entree)
 
-st.subheader('Résultat de la prévision')
-st.write(prevision)
+# st.subheader('Résultat de la prévision')
+# st.write(prevision)
             
