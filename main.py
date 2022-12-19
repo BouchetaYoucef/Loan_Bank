@@ -75,5 +75,5 @@ st.write(donnee_entree)
 # prevision=load_model.predict(donnee_entree)
 
 st.subheader('Résultat de la prévision')
-st.write(prevision)
+# st.write(prevision)
             
