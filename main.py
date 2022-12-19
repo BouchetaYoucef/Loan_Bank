@@ -9,7 +9,7 @@ def run():
     st.image(img1, use_column_width=False)
 
 
-    # new_title = '<p style="font-family:sans-serif; color:red; font-size: 20px;"></p>'
+    new_title = '<p style="font-family:sans-serif; color:red; font-size: 20px;"></p>'
     st.markdown(new_title, unsafe_allow_html=True)
     title = '<p style="font-family:sans-serif; color:red; font-size: 30px;">BANK SIMPLONIEN</p>'
 
