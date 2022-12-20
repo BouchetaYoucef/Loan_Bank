@@ -17,8 +17,7 @@ def run():
 
     # fn = st.text_input('Full Name')
     # account_no = st.text_input('Account number')
-    
-    Gender=st.sidebar.selectbox('Sexe',('Male','Female'))
+    Gender=st.selectbox.selectbox('Sexe',('Male','Female'))
 
     gen_display = ('Female','Male')
     gen_options = list(range(len(gen_display)))
@@ -43,6 +42,10 @@ def run():
     prop_display = ('Rural', 'Semi-Urban', 'Urban')
     prop_options = list(range(len(prop_display)))
     prop = st.selectbox("Property Area", prop_options, format_func=lambda x: prop_display[x])
+    
+    appl_display = ('150', '4000', '200')
+    appl_options = list(range(len(appl_display)))
+    appl = st.selectbox("ApplicantIncome", appl_options, format_func=lambda x: appl_display[x])
     
     # cred_display = ('Between 300 to 500', 'Above 500')
     # cred_options = list(range(len(cred_display)))
