@@ -9,14 +9,13 @@ def run():
     st.image(img1, use_column_width=False)
 
 
-    # new_title = '<p style="font-family:sans-serif; color:red; font-size: 20px;">BANK SIMPLONIEN</p>'
+    st.sidebar.header.new_title = '<p style="font-family:sans-serif; color:red; font-size: 20px;">BANK SIMPLONIEN</p>'
     # st.markdown(new_title, unsafe_allow_html=True)s
     # title = '<p style="font-family:sans-serif; color:orange; font-size: 30px;">B SIMPLONIEN</p>'
 
     # st.markdown(title,unsafe_allow_html=True)
 
-    # fn = st.text_input('Full Name')
-    # account_no = st.text_input('Account number')
+
     gen_display = ('Female','Male')
     gen_options = list(range(len(gen_display)))
     gen = st.selectbox("Gender",gen_options, format_func=lambda x: gen_display[x])
