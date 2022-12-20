@@ -45,7 +45,7 @@ def run():
     cred_options = list(range(len(cred_display)))
     cred = st.selectbox("Credit History", cred_options, format_func=lambda x: cred_display[x])
     
-    ApplicantIncome=st.sidebar.slider('Salaire du client',150,4000,200)
+    Titre=st.sidebar.slider('Bank SIMPLONIEN',st.write("L'application qui prédit l'accord du crédit"))
     
     # cred_display = ('Between 300 to 500', 'Above 500')
     # cred_options = list(range(len(cred_display)))
