@@ -8,7 +8,7 @@ def run():
     img1 = img1.resize((190, 190))
     st.image(img1, use_column_width=False)
 
-    st.sidebar.header("Les caracteristiques du client")
+    st.sidebar.header("L'application qui prédit l'accord du crédit")
 
     new_title = '<p style="font-family:sans-serif; color:red; font-size: 20px;">BANK SIMPLONIEN</p>'
     st.markdown(new_title, unsafe_allow_html=True)
