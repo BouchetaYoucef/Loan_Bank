@@ -17,6 +17,8 @@ def run():
 
     # fn = st.text_input('Full Name')
     # account_no = st.text_input('Account number')
+    
+    Gender=st.sidebar.selectbox('Sexe',('Male','Female'))
 
     gen_display = ('Female','Male')
     gen_options = list(range(len(gen_display)))
