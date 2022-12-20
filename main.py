@@ -17,8 +17,6 @@ def run():
 
     # fn = st.text_input('Full Name')
     # account_no = st.text_input('Account number')
-    Gender=st.selectbox.selectbox('Sexe',('Male','Female'))
-
     gen_display = ('Female','Male')
     gen_options = list(range(len(gen_display)))
     gen = st.selectbox("Gender",gen_options, format_func=lambda x: gen_display[x])
