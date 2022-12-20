@@ -11,7 +11,7 @@ def run():
     st.sidebar.header("Les caracteristiques du client")
 
     new_title = '<p style="font-family:sans-serif; color:red; font-size: 20px;">BANK SIMPLONIEN</p>'
-    st.markdown(new_title, unsafe_allow_html=True)s
+    st.markdown(new_title, unsafe_allow_html=True)
     title = '<p style="font-family:sans-serif; color:orange; font-size: 30px;">B SIMPLONIEN</p>'
 
     # st.markdown(title,unsafe_allow_html=True)
