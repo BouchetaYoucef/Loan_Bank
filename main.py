@@ -42,12 +42,6 @@ def run():
     cred_options = list(range(len(cred_display)))
     cred = st.selectbox("Credit History", cred_options, format_func=lambda x: cred_display[x])
     
-    Titre=st.sidebar(st.write("L'application qui prédit l'accord du crédit"))
-    
-    # cred_display = ('Between 300 to 500', 'Above 500')
-    # cred_options = list(range(len(cred_display)))
-    # cred = st.selectbox("Credit Score", cred_options, format_func=lambda x: cred_display[x])
-    
     mon_income = st.number_input("Applicant Income($)", value=0)
 
     co_mon_income = st.number_input("CoApplicant Income($)", value=0)
