@@ -8,7 +8,7 @@ def run():
     img1 = img1.resize((200, 200))
     st.image(img1, use_column_width=False)
 
-    st.sidebar.header('<p style="font-family:sans-serif; color:red; font-size: 20px;">BANK SIMPLONIEN</p>')
+    st.sidebar.new_title = '<p style="font-family:sans-serif; color:red; font-size: 20px;">BANK SIMPLONIEN</p>'
 
     # new_title = '<p style="font-family:sans-serif; color:red; font-size: 20px;">BANK SIMPLONIEN</p>'
     # st.markdown(new_title, unsafe_allow_html=True)
