@@ -8,12 +8,12 @@ def run():
     img1 = img1.resize((200, 200))
     st.image(img1, use_column_width=False)
 
-    st.sidebar.new_title = '<p style="font-family:sans-serif; color:red; font-size: 20px;">BANK SIMPLONIEN</p>'
+    st.sidebar.header("L'application qui prédit l'accord du crédit")
 
-    # new_title = '<p style="font-family:sans-serif; color:red; font-size: 20px;">BANK SIMPLONIEN</p>'
-    # st.markdown(new_title, unsafe_allow_html=True)
-    # title = '<p style="font-family:sans-serif; color:orange; font-size: 30px;">B SIMPLONIEN</p>'
-
+    new_title = '<p style="font-family:sans-serif; color:red; font-size: 20px;">BANK SIMPLONIEN</p>'
+    st.markdown(new_title, unsafe_allow_html=True)
+    title = '<p style="font-family:sans-serif; color:orange; font-size: 30px;">B SIMPLONIEN</p>'
+   
     gen_display = ('Female','Male')
     gen_options = list(range(len(gen_display)))
     gen = st.selectbox("Gender",gen_options, format_func=lambda x: gen_display[x])
@@ -42,7 +42,7 @@ def run():
     cred_options = list(range(len(cred_display)))
     cred = st.selectbox("Credit History", cred_options, format_func=lambda x: cred_display[x])
     
-    # Titre=st.sidebar('BANK SIMPLONIEN',st.write("L'application qui prédit l'accord du crédit"))
+    Titre=st.sidebar.slider('Bank SIMPLONIEN',st.write("L'application qui prédit l'accord du crédit"))
     
     # cred_display = ('Between 300 to 500', 'Above 500')
     # cred_options = list(range(len(cred_display)))
