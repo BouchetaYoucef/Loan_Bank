@@ -1,0 +1,15 @@
+artifact_uri: chemin_vers_le_dossier_mlruns_dans_le_dossier/0/54a660b1b46545c7811bcc3a642a9b4f/artifacts
+end_time: 1671546198578
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 54a660b1b46545c7811bcc3a642a9b4f
+run_name: Model app
+run_uuid: 54a660b1b46545c7811bcc3a642a9b4f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1671546198479
+status: 4
+tags: []
+user_id: simplon

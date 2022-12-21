@@ -7,7 +7,9 @@ def run():
     img1 = Image.open('image4.jpg')
     img1 = img1.resize((200, 200))
     st.image(img1, use_column_width=False)
+run()
 
+def function():
     st.sidebar.header("L'application qui prédit l'accord du crédit")
 
     new_title = '<p style="font-family:sans-serif; color:red; font-size: 20px;">BANK SIMPLONIEN</p>'
@@ -76,4 +78,4 @@ def run():
             st.success(
                 "Hello " + fn + ' '+' Congratulations!! you will get the loan from Bank'
             )
-run()
+function()
