@@ -63,7 +63,7 @@ def run():
             duration = 360
         if dur == 4:
             duration = 480
-        features = [[gen, mar, dep, edu, emp, mon_income, co_mon_income, loan_amt, duration, cred, prop]]
+        features = [[gen, mar, dep, edu, emp, prop, cred, mon_income, co_mon_income, loan_amt, duration, cred, prop]]
         print(features)
         prediction = model.predict(features)
         lc = [str(i) for i in prediction]
