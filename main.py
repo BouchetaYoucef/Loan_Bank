@@ -1,74 +1,90 @@
+
 import streamlit as st
 from PIL import Image
 import pickle
 model = pickle.load(open('model.pkl', 'rb'))
 
-@app.route('/')
+def run():
+    img1 = Image.open('image4.jpg')
+    img1 = img1.resize((200, 200))
+    st.image(img1, use_column_width=False)
+    fn = st.text_input('nom/prenom')
 
-def home():
-	return render_template('Loan_Prediction.html')
+st.sidebar.header("L'application qui prédit l'accord du crédit")
 
-@app.route('/prediction', methods = ['POST'])
-def prediction():
-	if request.method == 'POST':
-		gender = request.form['gender']
-		married = request.form['status']
-		dependat =request.form['dependants']
-		education = request.form['education']
-		employ = request.form['employ']
-		annual_income = request.form['aincome']
-		co_income = request.form['coincome']
-		Loan_amount = request.form['Lamount']
-		Loan_amount_term = request.form['Lamount_term']
-		credit = request.form['credit']
-		proper = request.form['property_area']
+new_title = '<p style="font-family:sans-serif; color:red; font-size: 20px;">BANK SIMPLONIEN</p>'
+st.markdown(new_title, unsafe_allow_html=True)
+# title = '<p style="font-family:sans-serif; color:orange; font-size: 30px;">B SIMPLONIEN</p>'
 
-	gender = gender.lower()
-	married= married.lower()
-	education = education.lower()
-	employ = employ.lower()
-	proper = proper.lower()
-	error = 0
-	if(employ=='yes'):
-		employ = 1
-	else:
-		employ = 0
-	if(gender=='male'):
-		gender = 1
-	else:
-		gender = 0
-	if (married=='married'):
-		married=1
-	else:
-		married=0
-	if (proper=='rural'):
-		proper=0
-	elif (proper=='semiurban'):
-		proper=1
-	else:
-		proper=2
-	if (education=='graduate'):
-		education=0
-	else:
-		education=1
-	try:
-		dependat = int(dependat)
-		annual_income = int(annual_income)
-		co_income = int(co_income)
-		Loan_amount = int(Loan_amount)
-		Loan_amount_term = int(Loan_amount_term)
-		credit = int(credit)
-		x_app = np.array([[gender, married, dependat,education,employ,annual_income,co_income,Loan_amount,Loan_amount_term,credit,proper]])
-		model = joblib.load('Forest.pkl')
-		ans = model.predict(x_app)
-		if (ans==1):
-			print("Congratulations your eligble for this Loan")
-		else:
-			print("We sad to inform that your request has not been accepted")
-		return render_template('shit.html', prediction=ans)
-	except ValueError:
-		return render_template('error.html', prediction=1)
-	
+gen_display = ('Female', 'Male')
+gen_options = list(range(len(gen_display)))
+gen = st.selectbox("Gender", gen_options, format_func=lambda x: gen_display[x])
 
-if __name__ == '__main__':
-	app.run(debug=True)
+mar_display = ('No', 'Yes')
+mar_options = list(range(len(mar_display)))
+mar = st.selectbox("Marital Status", mar_options,
+                   format_func=lambda x: mar_display[x])
+
+dep_display = ('No', '1', '2', '3+')
+dep_options = list(range(len(dep_display)))
+dep = st.selectbox("Dependents", dep_options,
+                   format_func=lambda x: dep_display[x])
+
+edu_display = ('Not Graduate', 'Graduate')
+edu_options = list(range(len(edu_display)))
+edu = st.selectbox("Education", edu_options,
+                   format_func=lambda x: edu_display[x])
+
+emp_display = ('Yes', 'No')
+emp_options = list(range(len(emp_display)))
+emp = st.selectbox("Self_Employed", emp_options,
+                   format_func=lambda x: emp_display[x])
+
+prop_display = ('Rural', 'Semi-Urban', 'Urban')
+prop_options = list(range(len(prop_display)))
+prop = st.selectbox("Property Area", prop_options,
+                    format_func=lambda x: prop_display[x])
+
+cred_display = ('1.0', '0.0')
+cred_options = list(range(len(cred_display)))
+cred = st.selectbox("Credit History", cred_options,
+                    format_func=lambda x: cred_display[x])
+
+mon_income = st.number_input("Applicant Income($)", value=0)
+
+co_mon_income = st.number_input("CoApplicant Income($)", value=0)
+
+loan_amt = st.number_input("Loan Amount", value=0)
+
+dur_display = ['2 Month', '6 Month', '8 Month',
+               '1 Year', '16 Month', '360 Month']
+dur_options = range(len(dur_display))
+dur = st.selectbox("Loan Duration", dur_options,
+                   format_func=lambda x: dur_display[x])
+if st.button("Submit"):
+    duration = 0
+if dur == 0:
+    duration = 60
+if dur == 1:
+    duration = 180
+if dur == 2:
+    duration = 240
+if dur == 3:
+    duration = 360
+if dur == 4:
+    duration = 480
+    features = [[gen, mar, dep, edu, emp, prop, cred, mon_income,
+                 co_mon_income, loan_amt, duration, cred, prop]]
+    print(features)
+    prediction = model.predict(features)
+lc = [str(i) for i in prediction]
+ans = int("".join(lc))
+if ans == 0:
+    st.error(
+        "Hello " + fn + ' you will not get a loan as per the calculations of the bank.'
+    )
+else:
+    st.success(
+        "Hello " + fn + ' '+' Congratulations!! you will get the loan from Bank'
+    )
+run()
