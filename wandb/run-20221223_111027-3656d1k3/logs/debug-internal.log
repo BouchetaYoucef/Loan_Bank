@@ -1,0 +1,6 @@
+2022-12-23 11:10:28,000 INFO    StreamThr :19308 [internal.py:wandb_internal():87] W&B internal server running at pid: 19308, started at: 2022-12-23 11:10:27.998621
+2022-12-23 11:10:28,005 DEBUG   HandlerThread:19308 [handler.py:handle_request():139] handle_request: status
+2022-12-23 11:10:28,007 DEBUG   SenderThread:19308 [sender.py:send_request():317] send_request: status
+2022-12-23 11:10:28,028 DEBUG   SenderThread:19308 [sender.py:send():303] send: header
+2022-12-23 11:10:28,028 INFO    WriterThread:19308 [datastore.py:open_for_write():75] open: C:\Users\simplon\Desktop\Notebooks\Dossier_Projet_Fil_Rouge\wandb\run-20221223_111027-3656d1k3\run-3656d1k3.wandb
+2022-12-23 11:10:28,110 DEBUG   SenderThread:19308 [sender.py:send():303] send: run

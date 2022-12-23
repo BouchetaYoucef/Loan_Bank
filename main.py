@@ -1,7 +1,7 @@
 import streamlit as st
 from PIL import Image
 import pickle
-model = pickle.load(open('model1.pkl', 'rb'))
+model = pickle.load(open('model.pkl', 'rb'))
 
 def run():
     img1 = Image.open('image4.jpg')
