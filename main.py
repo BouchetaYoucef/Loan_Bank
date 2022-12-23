@@ -78,8 +78,8 @@ if dur == 4:
     print(features)
     prediction = model.predict(features)
 # lc = [str(i) for i in prediction]
-ans = int("".join(lc))
-if ans == 0:
+# ans = int("".join(lc))
+# if ans == 0:
     st.error(
         "Hello " + fn + ' you will not get a loan as per the calculations of the bank.'
     )
