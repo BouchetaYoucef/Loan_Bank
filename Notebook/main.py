@@ -5,7 +5,7 @@ import pickle
 
 # from flask import Flask, request, jsonify, render_template
 
-app = streamlit(__name__)
+# app = streamlit(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 
 @app.route('/')
