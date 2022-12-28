@@ -8,7 +8,7 @@ model = pickle.load(open('model.pkl', 'rb'))
 st.write("L'application qui prédit l'accord du crédit")
 
 def run():
- img1 = Images.open('image4.jpg')
+ img1 = Image.open('image4.jpg')
  img1 = img1.resize((180, 180))
  st.image(img1, use_column_width=False) 
  
