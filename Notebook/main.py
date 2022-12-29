@@ -12,7 +12,7 @@ st.write("L'application qui prédit l'accord du crédit")
 def home():
     return render_template('index.html')
 
-@app.route('/predict',methods=['POST'])
+# @app.route('/predict',methods=['POST'])
 def predict():
     '''
     For rendering results on HTML GUI
