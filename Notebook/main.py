@@ -8,7 +8,7 @@ import pickle
 model = pickle.load(open('model.pkl', 'rb'))
 st.write("L'application qui prédit l'accord du crédit")
 
-@app.route('/')
+# @app.route('/')
 def home():
     return render_template('index.html')
 
