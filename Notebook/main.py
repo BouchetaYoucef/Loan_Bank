@@ -4,9 +4,9 @@ import pandas as pd
 import streamlit as st
 import pickle
 
-app = Flask(__name__)
+# app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
-
+st.write("L'application qui prédit l'accord du crédit")
 
 @app.route('/')
 def home():
