@@ -47,7 +47,7 @@ def run():
     ## For Credit Score
     cred_display = ('Between 300 to 500','Above 500')
     cred_options = list(range(len(cred_display)))
-    cred = st.sidebar("Credit Score",cred_options, format_func=lambda x: cred_display[x])
+    cred = st.selectbox("Credit Score",cred_options, format_func=lambda x: cred_display[x])
 
     ## Applicant Monthly Income
     mon_income = st.number_input("Applicant's Monthly Income($)",value=0)
