@@ -6,7 +6,7 @@ import pickle
 # model = pickle.load(open('Model.pkl', 'rb'))
 
 def run():
-    img1 = Image.open('image4.jpg')
+    # img1 = Image.open('image4.jpg')
     img1 = img1.resize((156,145))
     st.image(img1,use_column_width=False)
     st.title("Bank Simplonien")
