@@ -25,7 +25,7 @@ def run():
     mar = st.selectbox("Marital Status", mar_options, format_func=lambda x: mar_display[x])
 
     ## No of dependets
-    dep_display = ('No','One','Two','More than Two')
+    dep_display = ('No','One','Two','3 +')
     dep_options = list(range(len(dep_display)))
     dep = st.selectbox("Dependents",  dep_options, format_func=lambda x: dep_display[x])
 
@@ -47,7 +47,7 @@ def run():
     ## For Credit Score
     cred_display = ('Between 300 to 500','Above 500')
     cred_options = list(range(len(cred_display)))
-    cred = st.selectbox("Credit Score",cred_options, format_func=lambda x: cred_display[x])
+    cred = st.sidebar("Credit Score",cred_options, format_func=lambda x: cred_display[x])
 
     ## Applicant Monthly Income
     mon_income = st.number_input("Applicant's Monthly Income($)",value=0)
