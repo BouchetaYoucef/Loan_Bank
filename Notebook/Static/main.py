@@ -1,82 +1,99 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
+from PIL import Image
 import pickle
 
-model = pickle.load(open('model.pkl', 'rb'))
 
-st.write("L'application qui prédit l'accord du crédit")
+model = pickle.load(open('./Model/ML_Model.pkl', 'rb'))
 
 def run():
-#  img1 = Image.open('image4.jpg')
- img1 = img1.resize((180, 180))
- st.image(img1, use_column_width=False) 
- 
- new_title = '<p style="font-family:sans-serif; color:Red; font-size: 20px;">LOAN PREDICTION</p>'
- st.markdown(new_title, unsafe_allow_html=True)
- title = '<p style="font-family:sans-serif; color:Blue; font-size: 30px;">Bank Simplonien</p>'
+    img1 = Image.open('bank.png')
+    img1 = img1.resize((156,145))
+    st.image(img1,use_column_width=False)
+    st.title("Bank Loan Prediction using Machine Learning")
 
-#Collecter le profil d'entrée
-st.sidebar.header("Les caracteristiques du client")
+    ## Account No
+    account_no = st.text_input('Account number')
 
-def client_caract_entree():
- Gender=st.sidebar.selectbox('Gender',('Male','Female'))
- Married=st.sidebar.selectbox('Married',('Yes','No'))
- Dependents=st.sidebar.selectbox('Dependents',('0','1','2','3+'))
- Education=st.sidebar.selectbox('Education',('Graduate','Not Graduate'))
- Self_Employed=st.sidebar.selectbox('Self_Employed',('Yes','No'))
- ApplicantIncome=st.sidebar.slider('ApplicantIncome',150,4000,200)
- CoapplicantIncome=st.sidebar.slider('CoapplicantIncome',0,40000,2000)
- LoanAmount=st.sidebar.slider('LoanAmount',9.0,700.0,200.0)
- Loan_Amount_Term=st.sidebar.selectbox('Loan_Amount_Term',(360.0,120.0,240.0,180.0,60.0,300.0,36.0,84.0,12.0))
- Credit_History=st.sidebar.selectbox('Credit_History',(1.0,0.0))
- Property_Area=st.sidebar.selectbox('Property_Area',('Urban','Rural','Semiurban'))
- 
+    ## Full Name
+    fn = st.text_input('Full Name')
 
- data={
- 'Gender':Gender,
- 'Married':Married,
- 'Dependents':Dependents,
- 'Education':Education,
- 'Self_Employed':Self_Employed,
- 'ApplicantIncome':ApplicantIncome,
- 'CoapplicantIncome':CoapplicantIncome,
- 'LoanAmount':LoanAmount,
- 'Loan_Amount_Term':Loan_Amount_Term,
- 'Credit_History':Credit_History,
- 'Property_Area':Property_Area
- }
+    ## For gender
+    gen_display = ('Female','Male')
+    gen_options = list(range(len(gen_display)))
+    gen = st.selectbox("Gender",gen_options, format_func=lambda x: gen_display[x])
 
- profil_client=pd.DataFrame(data,index=[0])
- return profil_client
+    ## For Marital Status
+    mar_display = ('No','Yes')
+    mar_options = list(range(len(mar_display)))
+    mar = st.selectbox("Marital Status", mar_options, format_func=lambda x: mar_display[x])
 
-input_df=client_caract_entree()
+    ## No of dependets
+    dep_display = ('No','One','Two','More than Two')
+    dep_options = list(range(len(dep_display)))
+    dep = st.selectbox("Dependents",  dep_options, format_func=lambda x: dep_display[x])
 
-#Transformer les données d'entrée en données adaptées à notre modèle
-#importer la base de données
-df=pd.read_csv('train.csv')
-credit_input=df.drop(columns=['Loan_ID','Loan_Status'])
-donnee_entree=pd.concat([input_df,credit_input],axis=0)
+    ## For edu
+    edu_display = ('Not Graduate','Graduate')
+    edu_options = list(range(len(edu_display)))
+    edu = st.selectbox("Education",edu_options, format_func=lambda x: edu_display[x])
 
-# encodage des données
-var_cat=['Gender', 'Married', 'Dependents', 'Education','Self_Employed','Credit_History', 'Property_Area']
-for col in var_cat:
- lbe=pd.Labelencoder(donnee_entree[col],drop_first=True)
- donnee_entree=pd.concat([lbe,donnee_entree],axis=1)
- del donnee_entree[col]
-#prendre uniquement la premiere ligne
-donnee_entree=donnee_entree[:1]
+    ## For emp status
+    emp_display = ('Job','Business')
+    emp_options = list(range(len(emp_display)))
+    emp = st.selectbox("Employment Status",emp_options, format_func=lambda x: emp_display[x])
 
-#afficher les données transformées
-st.subheader('Les caracteristiques transformés')
-st.write(donnee_entree)
+    ## For Property status
+    prop_display = ('Rural','Semi-Urban','Urban')
+    prop_options = list(range(len(prop_display)))
+    prop = st.selectbox("Property Area",prop_options, format_func=lambda x: prop_display[x])
 
-#importer le modèle
-load_model=pickle.load(open('model.pkl','rb'))
+    ## For Credit Score
+    cred_display = ('Between 300 to 500','Above 500')
+    cred_options = list(range(len(cred_display)))
+    cred = st.selectbox("Credit Score",cred_options, format_func=lambda x: cred_display[x])
 
-#appliquer le modèle sur le profil d'entrée
-prevision=load_model.predict(donnee_entree)
+    ## Applicant Monthly Income
+    mon_income = st.number_input("Applicant's Monthly Income($)",value=0)
 
-st.subheader('Résultat de la prévision')
-# st.write(prevision)
+    ## Co-Applicant Monthly Income
+    co_mon_income = st.number_input("Co-Applicant's Monthly Income($)",value=0)
+
+    ## Loan AMount
+    loan_amt = st.number_input("Loan Amount",value=0)
+
+    ## loan duration
+    dur_display = ['2 Month','6 Month','8 Month','1 Year','16 Month']
+    dur_options = range(len(dur_display))
+    dur = st.selectbox("Loan Duration",dur_options, format_func=lambda x: dur_display[x])
+
+    if st.button("Submit"):
+        duration = 0
+        if dur == 0:
+            duration = 60
+        if dur == 1:
+            duration = 180
+        if dur == 2:
+            duration = 240
+        if dur == 3:
+            duration = 360
+        if dur == 4:
+            duration = 480
+        features = [[gen, mar, dep, edu, emp, mon_income, co_mon_income, loan_amt, duration, cred, prop]]
+        print(features)
+        prediction = model.predict(features)
+        lc = [str(i) for i in prediction]
+        ans = int("".join(lc))
+        if ans == 0:
+            st.error(
+                "Hello: " + fn +" || "
+                "Account number: "+account_no +' || '
+                'According to our Calculations, you will not get the loan from Bank'
+            )
+        else:
+            st.success(
+                "Hello: " + fn +" || "
+                "Account number: "+account_no +' || '
+                'Congratulations!! you will get the loan from Bank'
+            )
+
 run()
