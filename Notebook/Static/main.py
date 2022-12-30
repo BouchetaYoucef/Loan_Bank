@@ -12,10 +12,7 @@ def run():
     st.title("Bank Simplonien")
 
     ## Account No
-    account_no = st.text_input('Account number')
-
-    ## Full Name
-    fn = st.text_input('Full Name')
+    account_no = st.text_input('file number')
 
     ## For gender
     gen_display = ('Female','Male')
