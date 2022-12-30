@@ -50,10 +50,10 @@ def run():
     cred = st.selectbox("Credit Score",cred_options, format_func=lambda x: cred_display[x])
 
     ## Applicant Monthly Income
-    mon_income = st.number_input("Applicant's Monthly Income($)",value=0)
+    mon_income = st.number_input("ApplicantIcome",value=0)
 
     ## Co-Applicant Monthly Income
-    co_mon_income = st.number_input("Co-Applicant's Monthly Income($)",value=0)
+    co_mon_income = st.number_input("CoApplicantIncome",value=0)
 
     ## Loan AMount
     loan_amt = st.number_input("Loan Amount",value=0)
