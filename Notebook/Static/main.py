@@ -2,7 +2,7 @@ import streamlit as st
 from PIL import Image
 import pickle
 
-model = pickle.load(open('./model_pkl.pickle.pkl', 'rb'))
+classifier = pickle.load(open('./model_pkl.pickle.pkl', 'rb'))
 
 def run():
     img1 = Image.open('image4.jpg')
@@ -11,7 +11,7 @@ def run():
     # st.title("Bank Simplonien ")
 run()
 
-def prediction(Gender, Married, Dependents, ApplicantIncome, LoanAmount, Credit_History):
+def prediction(Gender, Married, Dependents, Employment_Status, ApplicantIncome, LoanAmount, Credit_History):
         
     #Pre-Processing user input
     ## For gender
@@ -37,7 +37,7 @@ def prediction(Gender, Married, Dependents, ApplicantIncome, LoanAmount, Credit_
     ## For emp status
     emp_display = ('Job','Business')
     emp_options = list(range(len(emp_display)))
-    emp = st.selectbox("Employment Status",emp_options, format_func=lambda x: emp_display[x])
+    emp = st.selectbox("Employment_Status",emp_options, format_func=lambda x: emp_display[x])
 
     ## For Property status
     prop_display = ('Rural','Semi-Urban','Urban')
@@ -66,8 +66,8 @@ def prediction(Gender, Married, Dependents, ApplicantIncome, LoanAmount, Credit_
     # if st.button("Submit"):
     
     # Making predictions
-    prediction = model.predict(
-        [[Gender, Married, Dependents, ApplicantIncome, LoanAmount, Credit_History]])
+    prediction = classifier.predict(
+        [[Gender, Married, Dependents, Employment_Status, ApplicantIncome, LoanAmount, Credit_History]])
     
     if prediction == 0:
         pred = 'Rejected'
@@ -90,7 +90,8 @@ def main():
     # following lines create boxes in which user can enter data required to make prediction
     Gender = st.selectbox('Gender',('Male','Female'))
     Married = st.selectbox('Marital Status',('Unmarried','Maried'))
-    Dependents = st.selectbox('Dependents', '1', '2', '3', '+' )
+    Dependents = st.selectbox('Dependents', ('1', '2', '3', '+' ))
+    Employment_Status = st.selectbox('Employment Status',('Job','Business'))
     ApplicantIncome = st.number_input('Applicants monthly income')
     LoanAmount = st.number_input('Total loan amount')
     Credit_History = st.selectbox('Credit_History',('Unclear Debts','No Unclear Debts'))
@@ -98,7 +99,7 @@ def main():
     
     # when 'Predict' is clicked, make the prediction and store it 
     if st.button("Predict"):
-        result = prediction(Gender, Married, Dependents, ApplicantIncome, LoanAmount, Credit_History)
+        result = prediction(Gender, Married, Dependents, Employment_Status, ApplicantIncome, LoanAmount, Credit_History)
         st.success('Your loan is {}'.format(result))
         print(LoanAmount)
         
