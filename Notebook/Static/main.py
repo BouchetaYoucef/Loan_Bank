@@ -1,4 +1,4 @@
-%%write app.py
+# %%write app.py
 
 import streamlit as st
 from PIL import Image
