@@ -1,71 +1,98 @@
-# %%write app.py
-
 import streamlit as st
 from PIL import Image
 import pickle
 
-# loading the trained model
-pickle_in = open('classifier.pkl', 'rb')
-classifier = pickle.load(pickle_in)
+model = pickle.load(open('./Model/ML_Model.pkl', 'rb'))
 
-@st.cache()
+def run():
+    img1 = Image.open('image4.jpg')
+    img1 = img1.resize((156,145))
+    st.image(img1,use_column_width=False)
+    st.title("Bank Simplonien ")
 
-# defining the function which will make make the prediction using the data which the user inputs
-def prediction(Gender, Married, ApplicantIncome, LoanAmount, Credit_History):
-    
-    #Pre-Processing user input
-    if Gender == 'Male':
-        Gender = 0
-    else:
-        Gender = 1
-        
-    if Married == 'Unmarried':
-        Married = 0
-    else:
-        Married = 1
-        
-    if Credit_History == 'Unclear Debts':
-        Credit_History = 0
-    else:
-        Credit_History = 1
-        
-    LoanAmount = LoanAmount / 100
-    
-    # Making predictions
-    prediction = classifier.predict(
-        [[Gender, Married, ApplicantIncome, LoanAmount, Credit_History]])
-    
-    if prediction == 0:
-        pred = 'Rejected'
-    else:
-        pred = 'Approved'
-    return pred
+    ## Account No
+    account_no = st.text_input('Account number')
 
-# this is the main function in which we define our webpage
-def main():
-    # front end elements of the web page
-    html_temp = """
-    <div style ="background-color:yellow;padding:13px">
-    <h1 style ="color:black;text-align:center;">Streamlit Loan Prediction ML App</h1>
-    </div>
-    """
-    
-    # display the front end aspect
-    st.markdown(html_temp, unsafe_allow_html= True)
-    
-    # following lines create boxes in which user can enter data required to make prediction
-    Gender = st.selectbox('Gender',('Male','Female'))
-    Married = st.selectbox('Marital Status',('Unmarried','Maried'))
-    ApplicantIncome = st.number_input('Applicants monthly income')
-    LoanAmount = st.number_input('Total loan amount')
-    Credit_History = st.selectbox('Credit_History',('Unclear Debts','No Unclear Debts'))
-    result =""
-    
-    # when 'Predict' is clicked, make the prediction and store it 
-    if st.button("Predict"):
-        result = prediction(Gender, Married, ApplicantIncome, LoanAmount, Credit_History)
-        st.success('Your loan is {}'.format(result))
-        print(LoanAmount)
-        
-if __name__=='__main__':
-    main()
+    ## Full Name
+    fn = st.text_input('Full Name')
+
+    ## For gender
+    gen_display = ('Female','Male')
+    gen_options = list(range(len(gen_display)))
+    gen = st.selectbox("Gender",gen_options, format_func=lambda x: gen_display[x])
+
+    ## For Marital Status
+    mar_display = ('No','Yes')
+    mar_options = list(range(len(mar_display)))
+    mar = st.selectbox("Marital Status", mar_options, format_func=lambda x: mar_display[x])
+
+    ## No of dependets
+    dep_display = ('No','One','Two','More than Two')
+    dep_options = list(range(len(dep_display)))
+    dep = st.selectbox("Dependents",  dep_options, format_func=lambda x: dep_display[x])
+
+    ## For edu
+    edu_display = ('Not Graduate','Graduate')
+    edu_options = list(range(len(edu_display)))
+    edu = st.selectbox("Education",edu_options, format_func=lambda x: edu_display[x])
+
+    ## For emp status
+    emp_display = ('Job','Business')
+    emp_options = list(range(len(emp_display)))
+    emp = st.selectbox("Employment Status",emp_options, format_func=lambda x: emp_display[x])
+
+    ## For Property status
+    prop_display = ('Rural','Semi-Urban','Urban')
+    prop_options = list(range(len(prop_display)))
+    prop = st.selectbox("Property Area",prop_options, format_func=lambda x: prop_display[x])
+
+    ## For Credit Score
+    cred_display = ('Between 300 to 500','Above 500')
+    cred_options = list(range(len(cred_display)))
+    cred = st.selectbox("Credit Score",cred_options, format_func=lambda x: cred_display[x])
+
+    ## Applicant Monthly Income
+    mon_income = st.number_input("Applicant's Monthly Income($)",value=0)
+
+    ## Co-Applicant Monthly Income
+    co_mon_income = st.number_input("Co-Applicant's Monthly Income($)",value=0)
+
+    ## Loan AMount
+    loan_amt = st.number_input("Loan Amount",value=0)
+
+    ## loan duration
+    dur_display = ['2 Month','6 Month','8 Month','1 Year','16 Month']
+    dur_options = range(len(dur_display))
+    dur = st.selectbox("Loan Duration",dur_options, format_func=lambda x: dur_display[x])
+
+    if st.button("Submit"):
+        duration = 0
+        if dur == 0:
+            duration = 60
+        if dur == 1:
+            duration = 180
+        if dur == 2:
+            duration = 240
+        if dur == 3:
+            duration = 360
+        if dur == 4:
+            duration = 480
+        features = [[gen, mar, dep, edu, emp, mon_income, co_mon_income, loan_amt, duration, cred, prop]]
+        print(features)
+        prediction = model.predict(features)
+        lc = [str(i) for i in prediction]
+        ans = int("".join(lc))
+        if ans == 0:
+            st.error(
+                "Hello: " + fn +" || "
+                "Account number: "+account_no +' || '
+                'According to our Calculations, you will not get the loan from Bank'
+            )
+        else:
+            st.success(
+                "Hello: " + fn +" || "
+                "Account number: "+account_no +' || '
+                'Congratulations!! you will get the loan from Bank'
+            )
+
+run()
