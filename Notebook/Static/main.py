@@ -2,11 +2,11 @@ import streamlit as st
 from PIL import Image
 import pickle
 
-# model = pickle.load(open('./classifier.pickle.pkl', 'rb'))
+model = pickle.load(open('./classifier.pickle.pkl', 'rb'))
 
 def run():
     img1 = Image.open('image4.jpg')
-    img1 = img1.resize((156,145))
+    img1 = img1.resize((700,300))
     st.image(img1,use_column_width=False)
     # st.title("Bank Simplonien ")
 run()

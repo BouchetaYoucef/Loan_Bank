@@ -20,3 +20,4 @@ config: {'learning_rate': 0.02, 'architecture': 'ML', 'dataset': 'CIFAR-100', 'e
 2023-01-02 11:07:55,917 ERROR   MainThread:10224 [wandb_init.py:init():704] backend process timed out
 2023-01-02 11:07:55,917 ERROR   MainThread:10224 [wandb_init.py:init():713] encountered error: Error communicating with wandb process
 For more info see: https://docs.wandb.ai/library/init#init-start-error
+2023-01-02 16:42:00,168 WARNING MsgRouterThr:10224 [router.py:message_loop():77] message_loop has been closed
