@@ -11,63 +11,43 @@ def run():
     # st.title("Bank Simplonien ")
 run()
 
-def prediction(Gender, Married, Dependents, Employment_Status, ApplicantIncome, LoanAmount, Credit_History):
+def prediction(Gender, Married, Dependents, Employment_Status, ApplicantIncome, CoapplicantIncome,LoanAmount, Credit_History):
         
-    #Pre-Processing user input
-    ## For gender
-    gen_display = ('Female','Male')
-    gen_options = list(range(len(gen_display)))
-    gen = st.selectbox("Gender",gen_options, format_func=lambda x: gen_display[x])
+ Gender=st.sidebar.selectbox('Sexe',('Male','Female'))
+ Married=st.sidebar.selectbox('Marié',('Yes','No'))
+ Dependents=st.sidebar.selectbox('Enfants',('0','1','2','3+'))
+ Education=st.sidebar.selectbox('Education',('Graduate','Not Graduate'))
+ Self_Employed=st.sidebar.selectbox('Salarié ou Entrepreneur',('Yes','No'))
+ ApplicantIncome=st.sidebar.slider('Salaire du client',150,4000,200)
+ CoapplicantIncome=st.sidebar.slider('Salaire du conjoint',0,40000,2000)
+ LoanAmount=st.sidebar.slider('Montant du crédit en Kdollar',9.0,700.0,200.0)
+ Loan_Amount_Term=st.sidebar.selectbox('Durée du crédit',(360.0,120.0,240.0,180.0,60.0,300.0,36.0,84.0,12.0))
+ Credit_History=st.sidebar.selectbox('Credit_History',(1.0,0.0))
+ Property_Area=st.sidebar.selectbox('Property_Area',('Urban','Rural','Semiurban'))
+ 
+ data={
+ 'Gender':Gender,
+ 'Married':Married,
+ 'Dependents':Dependents,
+ 'Education':Education,
+ 'Self_Employed':Self_Employed,
+ 'ApplicantIncome':ApplicantIncome,
+ 'CoapplicantIncome':CoapplicantIncome,
+ 'LoanAmount':LoanAmount,
+ 'Loan_Amount_Term':Loan_Amount_Term,
+'Credit_History':Credit_History,
+ 'Property_Area':Property_Area
+ }
 
-    ## For Marital Status
-    mar_display = ('No','Yes')
-    mar_options = list(range(len(mar_display)))
-    mar = st.selectbox("Marital Status", mar_options, format_func=lambda x: mar_display[x])
+profil_client=pd.DataFrame(data,index=[0])
+ return profil_client
 
-    ## No of dependets
-    dep_display = ('0','1','2','3', '+')
-    dep_options = list(range(len(dep_display)))
-    dep = st.selectbox("Dependents",  dep_options, format_func=lambda x: dep_display[x])
-
-    ## For edu
-    edu_display = ('Not Graduate','Graduate')
-    edu_options = list(range(len(edu_display)))
-    edu = st.selectbox("Education",edu_options, format_func=lambda x: edu_display[x])
-
-    ## For emp status
-    emp_display = ('Job','Business')
-    emp_options = list(range(len(emp_display)))
-    emp = st.selectbox("Employment_Status",emp_options, format_func=lambda x: emp_display[x])
-
-    ## For Property status
-    prop_display = ('Rural','Semi-Urban','Urban')
-    prop_options = list(range(len(prop_display)))
-    prop = st.selectbox("Property Area",prop_options, format_func=lambda x: prop_display[x])
-
-    ## For Credit Score
-    # cred_display = ('Between 300 to 500','Above 500')
-    # cred_options = list(range(len(cred_display)))
-    # cred = st.selectbox("Credit Score",cred_options, format_func=lambda x: cred_display[x])
-
-    ## Applicant Monthly Income
-    mon_income = st.number_input("ApplicantIncome",value=0)
-
-    ## Co-Applicant Monthly Income
-    co_mon_income = st.number_input("CoApplicantIncome",value=0)
-
-    ## Loan AMount
-    loan_amt = st.number_input("Loan Amount",value=0)
-
-    ## loan duration
-    dur_display = ['2 Month','6 Month','8 Month','1 Year','16 Month']
-    dur_options = range(len(dur_display))
-    dur = st.selectbox("Loan Duration",dur_options, format_func=lambda x: dur_display[x])
-
+    input_df=client_caract_entree()
     # if st.button("Submit"):
     
     # Making predictions
     prediction = classifier.predict(
-        [[Gender, Married, Dependents, Employment_Status, ApplicantIncome, LoanAmount, Credit_History]])
+        [[Gender, Married, Dependents, Employment_Status, ApplicantIncome, CoapplicantIncome, LoanAmount, Credit_History]])
     
     if prediction == 0:
         pred = 'Rejected'
@@ -76,9 +56,9 @@ def prediction(Gender, Married, Dependents, Employment_Status, ApplicantIncome, 
     return pred
 
 # this is the main function in which we define our webpage
-def main():
+    def main():
     # front end elements of the web page
-    html_temp = """
+     html_temp = """
     <div style ="background-color:blue;padding:13px">
     <h1 style ="color:white;text-align:center;">Bank Simplonien</h1>
     </div>
@@ -103,5 +83,5 @@ def main():
         st.success('Your loan is {}'.format(result))
         print(LoanAmount)
         
-if __name__=='__main__':
-    main()
+    if __name__=='__main__':
+     main()
