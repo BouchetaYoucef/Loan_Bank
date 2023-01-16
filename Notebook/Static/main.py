@@ -3,13 +3,12 @@ from PIL import Image
 import pickle
 
 # model = pickle.load(open('./classifier.pickle.pkl', 'rb'))
-model = pickle.load(open('model.pkl', 'wb'))
-def run():
-    img1 = Image.open('image4.jpg')
-    img1 = img1.resize((600,200))
-    st.image(img1,use_column_width=False)
+model = pickle.load(open('model_pkl.pickle', 'rb'))
+
+img1 = Image.open('image4.jpg')
+img1 = img1.resize((600,200))
+st.image(img1,use_column_width=False)
     # st.title("Bank Simplonien ")
-run()
 
 # def prediction(Gender, Married, Dependents, Employment_Status, ApplicantIncome, CoapplicantIncome,LoanAmount, Credit_History):
 
