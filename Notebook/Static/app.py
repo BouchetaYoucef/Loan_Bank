@@ -3,7 +3,7 @@ from PIL import Image
 import pickle
 
 # model = pickle.load(open('./classifier.pickle.pkl', 'rb'))
-model = pickle.load(open('model_pkl', 'rb'))
+model = pickle.load(open('model_pkl.pickle', 'rb'))
 
 img1 = Image.open('image4.jpg')
 img1 = img1.resize((600,200))
