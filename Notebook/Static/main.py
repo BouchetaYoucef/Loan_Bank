@@ -3,7 +3,7 @@ from PIL import Image
 import pickle
 
 # model = pickle.load(open('./classifier.pickle.pkl', 'rb'))
-# model = pickle.load(open('./Model/ML_Model.pkl', 'rb'))
+model = pickle.load(open('./Model/ML_Model.pkl', 'rb'))
 def run():
     img1 = Image.open('image4.jpg')
     img1 = img1.resize((600,200))
@@ -139,7 +139,7 @@ features = [[gen, mar, dep, edu, emp, mon_income, co_mon_income, loan_amt, durat
 
 print(features)
 
-prediction = model.predict(features)
+prediction = model.pkl(features)
 
 lc = [str(i) for i in prediction]
 
@@ -149,9 +149,9 @@ if ans == 0:
 
     st.error(
 
-"Hello: " + fn +" || "
+# "Hello: " + fn +" || "
 
-"Account number: "+account_no +' || '
+# "Account number: "+account_no +' || '
 
 'Sorry, the loan will not be granted'
 
@@ -160,9 +160,9 @@ if ans == 0:
 else:
     st.success(
 
-"Hello: " + fn +" || "
+# "Hello: " + fn +" || "
 
-"Account number: "+account_no +' || '
+# "Account number: "+account_no +' || '
 
 'Congratulations, the credit is granted !!'
 
