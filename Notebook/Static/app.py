@@ -2,167 +2,93 @@ import streamlit as st
 from PIL import Image
 import pickle
 
-# model = pickle.load(open('./classifier.pickle.pkl', 'rb'))
 model = pickle.load(open('model_pkl.pickle', 'rb'))
 
 img1 = Image.open('image4.jpg')
-img1 = img1.resize((600,200))
-st.image(img1,use_column_width=False)
-    # st.title("Bank Simplonien ")
+img1 = img1.resize((600, 200))
+st.image(img1, use_column_width=False)
 
-# def prediction(Gender, Married, Dependents, Employment_Status, ApplicantIncome, CoapplicantIncome,LoanAmount, Credit_History):
+## --- SELECTIONS DES DONNEES --- ## 
 
-## For gender
-
-gen_display = ('Female','Male')
-
+# For gender
+gen_display = ('Female', 'Male')
 gen_options = list(range(len(gen_display)))
-
-gen = st.selectbox("Gender",gen_options, format_func=lambda x: gen_display[x])
-
+gen = st.selectbox("Gender", gen_options, format_func=lambda x: gen_display[x])
 
 
-## For Marital Status
-
-mar_display = ('No','Yes')
-
+# For Marital Status
+mar_display = ('No', 'Yes')
 mar_options = list(range(len(mar_display)))
+mar = st.selectbox("Married", mar_options,
+                   format_func=lambda x: mar_display[x])
 
-mar = st.selectbox("Married", mar_options, format_func=lambda x: mar_display[x])
 
-
-
-## No of dependets
-
-dep_display = ('No','One','Two','More than Two')
-
+# No of dependets
+dep_display = ('No', 'One', 'Two', 'More than Two')
 dep_options = list(range(len(dep_display)))
+dep = st.selectbox("Dependents", dep_options,
+                   format_func=lambda x: dep_display[x])
 
-dep = st.selectbox("Dependents", dep_options, format_func=lambda x: dep_display[x])
 
-
-
-## For edu
-
-edu_display = ('Not Graduate','Graduate')
-
+# For edu
+edu_display = ('Not Graduate', 'Graduate')
 edu_options = list(range(len(edu_display)))
+edu = st.selectbox("Education", edu_options,
+                   format_func=lambda x: edu_display[x])
 
-edu = st.selectbox("Education",edu_options, format_func=lambda x: edu_display[x])
 
-
-
-## For emp status
-
-emp_display = ('Yes','No')
-
+# For emp status
+emp_display = ('Yes', 'No')
 emp_options = list(range(len(emp_display)))
+emp = st.selectbox("Self_Employed", emp_options,
+                   format_func=lambda x: emp_display[x])
 
-emp = st.selectbox("Self_Employed",emp_options, format_func=lambda x: emp_display[x])
 
-
-
-## For Property status
-
-prop_display = ('Rural','Semi-Urban','Urban')
-
+# For Property status
+prop_display = ('Rural', 'Semi-Urban', 'Urban')
 prop_options = list(range(len(prop_display)))
+prop = st.selectbox("Property Area", prop_options,
+                    format_func=lambda x: prop_display[x])
 
-prop = st.selectbox("Property Area",prop_options, format_func=lambda x: prop_display[x])
 
-
-
-## For Credit Score
-
-cred_display = ('Between 300 to 500','Above 500')
-
+# For Credit Score
+cred_display = ('Between 300 to 500', 'Above 500')
 cred_options = list(range(len(cred_display)))
-
-cred = st.selectbox("Credit_History",cred_options, format_func=lambda x: cred_display[x])
-
-
-
-## Applicant Monthly Income
-
-mon_income = st.number_input("ApplicantIncome($)",value=0)
+cred = st.selectbox("Credit_History", cred_options,
+                    format_func=lambda x: cred_display[x])
 
 
-
-## Co-Applicant Monthly Income
-
-co_mon_income = st.number_input("CoapplicantIncome($)",value=0)
+# Applicant Monthly Income
+mon_income = st.number_input("ApplicantIncome($)", value=0)
 
 
-
-## Loan AMount
-
-loan_amt = st.number_input("Loan Amount",value=0)
+# Co-Applicant Monthly Income
+co_mon_income = st.number_input("CoapplicantIncome($)", value=0)
 
 
+# Loan AMount
+loan_amt = st.number_input("Loan Amount", value=0)
 
-## loan duration
 
-dur_display = ['12 Month','65 Month','342 Month','360 Month','480 Month','600 Month']
-
+# loan duration
+dur_display = [12, 65, 342, 360, 480, 600]
 dur_options = range(len(dur_display))
+dur = st.selectbox("Loan_Amount_Term", dur_options,
+                   format_func=lambda x: dur_display[x])
 
-dur = st.selectbox("Loan_Amount_Term",dur_options, format_func=lambda x: dur_display[x])
+## ----------------------------------------------------- ## 
+
+## --- TRAITEMENT DES DONNEES --- ##
+
+
+
+
+
+## ------------------------------ ##
 
 
 
 if st.button("Submit"):
-
     duration = 0
 
-if dur == 0:
 
-    duration = 60
-
-if dur == 1:
-
-    duration = 180
-
-if dur == 2:
-
-    duration = 240
-
-if dur == 3:
-
-    duration = 360
-
-if dur == 4:
-
-    duration = 480
-
-features = [[gen, mar, dep, edu, emp, mon_income, co_mon_income, loan_amt, duration, cred, prop]]
-
-print(features)
-
-prediction = model.pkl(features)
-
-lc = [str(i) for i in prediction]
-
-ans = int("".join(lc))
-
-if ans == 0:
-
-    st.error(
-
-# "Hello: " + fn +" || "
-
-# "Account number: "+account_no +' || '
-
-'Sorry, the loan will not be granted'
-
-)
-
-else:
-    st.success(
-
-# "Hello: " + fn +" || "
-
-# "Account number: "+account_no +' || '
-
-'Congratulations, the credit is granted !!'
-
-)
