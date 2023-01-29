@@ -1,0 +1,29 @@
+2023-01-19 15:51:49,081 INFO    MainThread:14620 [wandb_setup.py:_flush():68] Configure stats pid to 14620
+2023-01-19 15:51:49,081 INFO    MainThread:14620 [wandb_setup.py:_flush():68] Loading settings from C:\Users\simplon\.config\wandb\settings
+2023-01-19 15:51:49,081 INFO    MainThread:14620 [wandb_setup.py:_flush():68] Loading settings from C:\Users\simplon\Desktop\Notebooks\Dossier_Projet_Fil_Rouge\Notebook\wandb\settings
+2023-01-19 15:51:49,081 INFO    MainThread:14620 [wandb_setup.py:_flush():68] Loading settings from environment variables: {'_require_service': 'True'}
+2023-01-19 15:51:49,082 INFO    MainThread:14620 [wandb_setup.py:_flush():68] Inferring run settings from compute environment: {'program': '<python with no main file>'}
+2023-01-19 15:51:49,083 INFO    MainThread:14620 [wandb_init.py:_log_setup():478] Logging user logs to C:\Users\simplon\Desktop\Notebooks\Dossier_Projet_Fil_Rouge\Notebook\wandb\run-20230119_155149-bt1xjnx0\logs\debug.log
+2023-01-19 15:51:49,083 INFO    MainThread:14620 [wandb_init.py:_log_setup():479] Logging internal logs to C:\Users\simplon\Desktop\Notebooks\Dossier_Projet_Fil_Rouge\Notebook\wandb\run-20230119_155149-bt1xjnx0\logs\debug-internal.log
+2023-01-19 15:51:49,083 INFO    MainThread:14620 [wandb_init.py:_jupyter_setup():428] configuring jupyter hooks <wandb.sdk.wandb_init._WandbInit object at 0x000001FB00831400>
+2023-01-19 15:51:49,084 INFO    MainThread:14620 [wandb_init.py:init():518] calling init triggers
+2023-01-19 15:51:49,084 INFO    MainThread:14620 [wandb_init.py:init():521] wandb.init called with sweep_config: {}
+config: {'learning_rate': 0.02, 'architecture': 'ML', 'dataset': 'CIFAR-100', 'epochs': 10}
+2023-01-19 15:51:49,084 INFO    MainThread:14620 [wandb_init.py:init():571] starting backend
+2023-01-19 15:51:49,084 INFO    MainThread:14620 [wandb_init.py:init():575] setting up manager
+2023-01-19 15:51:49,181 INFO    MainThread:14620 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=spawn, using: spawn
+2023-01-19 15:51:49,290 INFO    MainThread:14620 [wandb_init.py:init():582] backend started and connected
+2023-01-19 15:51:49,309 INFO    MainThread:14620 [wandb_run.py:_label_probe_notebook():1202] probe notebook
+2023-01-19 15:51:49,314 INFO    MainThread:14620 [wandb_run.py:_label_probe_notebook():1212] Unable to probe notebook: 'NoneType' object has no attribute 'get'
+2023-01-19 15:51:49,314 INFO    MainThread:14620 [wandb_init.py:init():670] updated telemetry
+2023-01-19 15:51:49,411 INFO    MainThread:14620 [wandb_init.py:init():710] communicating run to backend with 60.0 second timeout
+2023-01-19 15:51:57,200 INFO    MainThread:14620 [wandb_run.py:_on_init():2121] communicating current version
+2023-01-19 15:51:57,413 INFO    MainThread:14620 [wandb_run.py:_on_init():2125] got version response 
+2023-01-19 15:51:57,413 INFO    MainThread:14620 [wandb_init.py:init():758] starting run threads in backend
+2023-01-19 15:52:27,753 INFO    MainThread:14620 [wandb_run.py:_console_start():2101] atexit reg
+2023-01-19 15:52:27,754 INFO    MainThread:14620 [wandb_run.py:_redirect():1959] redirect: SettingsConsole.WRAP_RAW
+2023-01-19 15:52:27,754 INFO    MainThread:14620 [wandb_run.py:_redirect():2024] Wrapping output streams.
+2023-01-19 15:52:27,755 INFO    MainThread:14620 [wandb_run.py:_redirect():2046] Redirects installed.
+2023-01-19 15:52:27,756 INFO    MainThread:14620 [wandb_init.py:init():798] run started, returning control to user process
+2023-01-19 15:52:28,199 INFO    MainThread:14620 [wandb_init.py:_pause_backend():391] pausing backend
+2023-01-19 15:52:28,199 INFO    MainThread:14620 [jupyter.py:save_ipynb():379] not saving jupyter notebook

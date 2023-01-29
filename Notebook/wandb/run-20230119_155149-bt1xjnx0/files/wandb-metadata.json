@@ -1,0 +1,41 @@
+{
+    "os": "Windows-10-10.0.19041-SP0",
+    "python": "3.8.8",
+    "heartbeatAt": "2023-01-19T14:51:57.485345",
+    "startedAt": "2023-01-19T14:51:49.072471",
+    "docker": null,
+    "cuda": null,
+    "args": null,
+    "state": "running",
+    "program": "Desktop/Notebooks/Dossier_Projet_Fil_Rouge/Notebook/Loan_Prediction_ML_Final.ipynb",
+    "root": "C:/Users/simplon/Desktop/Notebooks/Dossier_Projet_Fil_Rouge",
+    "git": {
+        "remote": "https://github.com/BouchetaYoucef/Loan_Bank.git",
+        "commit": "57a1d21bc90c62a2d67c72962c1a88982069e2fd"
+    },
+    "email": "youcef.boucheta.simplon@gmail.com",
+    "host": "DESKTOP-MSDTRNN",
+    "username": "simplon",
+    "executable": "C:\\Users\\simplon\\anaconda3\\python.exe",
+    "cpu_count": 2,
+    "cpu_count_logical": 4,
+    "cpu_freq": {
+        "current": 1600.0,
+        "min": 0.0,
+        "max": 2201.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 1600.0,
+            "min": 0.0,
+            "max": 2201.0
+        }
+    ],
+    "disk": {
+        "total": 232.34765243530273,
+        "used": 230.7843017578125
+    },
+    "memory": {
+        "total": 15.878032684326172
+    }
+}

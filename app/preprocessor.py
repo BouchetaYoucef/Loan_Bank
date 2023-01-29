@@ -3,7 +3,7 @@ import os, joblib
 import pandas as pd
 import numpy as np
 
-from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from sklearn.preprocessing import StandardScaler
 from sklearn.compose import ColumnTransformer
 
@@ -34,10 +34,7 @@ class MultiColumnLabelEncoder:
     def __init__(self,columns = None):
         self.columns = columns # array of column names to encode
 
-    def fit(self,X,y=None):
-        return self # not relevant here
-
-    def transform(self,X):
+    def fit_transform(self, X):
         """
         Transforms columns of X specified in self.columns using
         LabelEncoder(). If no columns specified, transforms all
@@ -52,17 +49,17 @@ class MultiColumnLabelEncoder:
                 output[colname] = LabelEncoder().fit_transform(col)
         return output
 
-    def fit_transform(self,X,y=None):
-        return self.fit(X,y).transform(X)
+    # def fit_transform(self,X):
+    #     return self.fit(X).transform(X)
 # ---------------------------------------- #
 
 def cleaner(data):
     # assert all(x in COLUMNS_NAMES for x in data.columns)
 
     # data = data.drop(["Loan_ID"], axis=1)
-    data = data.dropna()
+    # data = data.dropna()
     data.columns = data.columns.str.lower()
-    data["dependents"] = pd.to_numeric(data["dependents"].map({"3+": "3", "0": "0", "1": "1", "2": "2"}))
+    data = (data.replace({"3+": 3, "0": 0, "1": 1, "2": 2}))
 
     return data
 
@@ -77,8 +74,10 @@ def splitter_balancer(X, y):
 
 def feature_encoder(X, ctg_fts = categorical_fts):
     le = LabelEncoder()
+    one_hot = OneHotEncoder()
 
-    onehot_df = pd.get_dummies(X[ctg_fts[-1]])
+    onehot_df = one_hot.fit_transform(X[ctg_fts[-1]].reshape(1, -1))
+    return onehot_df
     label_df = MultiColumnLabelEncoder(columns = ctg_fts[:-1]).fit_transform(X)
     label_df = label_df.drop(ctg_fts[-1], axis=1)
 
