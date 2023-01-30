@@ -62,7 +62,6 @@ def check_password():
     else:
         # Password correct.
         return True
-    st.download_button("Login",index=False).encode('utf-8')
 
 ## Login ##
 if check_password():
@@ -84,7 +83,7 @@ if check_password():
 
     # No of dependets
     dep_display = ('0', '1', '2', '3+')
-    dep = st.selectbox("Nombre d'enfant(s)", dep_display)
+    dep = st.selectbox("Nombre de salarié(s)", dep_display)
 
     # For edu
     edu_display = ('Not Graduate', 'Graduate')
@@ -100,7 +99,7 @@ if check_password():
 
     # Applicant Monthly Income
     mon_income = float(st.number_input("Revenus demandeur", value=0))
-    
+
     # Credit history
     credit_hst_display = ('Yes', 'No')
     credit_history = st.selectbox("Historique de crédit", credit_hst_display)         
