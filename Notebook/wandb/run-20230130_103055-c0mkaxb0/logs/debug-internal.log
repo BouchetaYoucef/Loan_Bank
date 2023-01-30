@@ -1,0 +1,5 @@
+2023-01-30 10:30:55,246 INFO    StreamThr :7556 [internal.py:wandb_internal():87] W&B internal server running at pid: 7556, started at: 2023-01-30 10:30:55.245229
+2023-01-30 10:30:55,248 DEBUG   HandlerThread:7556 [handler.py:handle_request():144] handle_request: status
+2023-01-30 10:30:55,327 INFO    WriterThread:7556 [datastore.py:open_for_write():85] open: C:\Users\simplon\Desktop\Notebooks\Dossier_Projet_Fil_Rouge\Notebook\wandb\run-20230130_103055-c0mkaxb0\run-c0mkaxb0.wandb
+2023-01-30 10:30:55,327 DEBUG   SenderThread:7556 [sender.py:send():334] send: header
+2023-01-30 10:30:55,417 DEBUG   SenderThread:7556 [sender.py:send():334] send: run
