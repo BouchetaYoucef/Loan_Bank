@@ -17,3 +17,13 @@ config: {'learning_rate': 0.02, 'architecture': 'ML', 'dataset': 'CIFAR-100', 'e
 2023-01-30 10:30:55,324 INFO    MainThread:20452 [wandb_run.py:_label_probe_notebook():1212] Unable to probe notebook: 'NoneType' object has no attribute 'get'
 2023-01-30 10:30:55,325 INFO    MainThread:20452 [wandb_init.py:init():670] updated telemetry
 2023-01-30 10:30:55,417 INFO    MainThread:20452 [wandb_init.py:init():710] communicating run to backend with 60.0 second timeout
+2023-01-30 10:30:58,650 INFO    MainThread:20452 [wandb_run.py:_on_init():2121] communicating current version
+2023-01-30 10:30:59,494 INFO    MainThread:20452 [wandb_run.py:_on_init():2125] got version response 
+2023-01-30 10:30:59,494 INFO    MainThread:20452 [wandb_init.py:init():758] starting run threads in backend
+2023-01-30 10:31:29,903 INFO    MainThread:20452 [wandb_run.py:_console_start():2101] atexit reg
+2023-01-30 10:31:29,903 INFO    MainThread:20452 [wandb_run.py:_redirect():1959] redirect: SettingsConsole.WRAP_RAW
+2023-01-30 10:31:29,903 INFO    MainThread:20452 [wandb_run.py:_redirect():2024] Wrapping output streams.
+2023-01-30 10:31:29,903 INFO    MainThread:20452 [wandb_run.py:_redirect():2046] Redirects installed.
+2023-01-30 10:31:29,903 INFO    MainThread:20452 [wandb_init.py:init():798] run started, returning control to user process
+2023-01-30 10:31:30,395 INFO    MainThread:20452 [wandb_init.py:_pause_backend():391] pausing backend
+2023-01-30 10:31:30,395 INFO    MainThread:20452 [jupyter.py:save_ipynb():379] not saving jupyter notebook
